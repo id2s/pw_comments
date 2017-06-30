@@ -471,4 +471,9 @@ class Comment extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	public function setAuthorIdent($authorIdent) {
 		$this->authorIdent = $authorIdent;
 	}
+
+    public function initializeObject()
+    {
+
+    }
 }
