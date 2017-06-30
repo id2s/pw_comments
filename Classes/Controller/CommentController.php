@@ -190,7 +190,7 @@ class CommentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 		$translateArguments = array(
 			'name' => $newComment->getAuthorName(),
-			'email' => $newComment->getAuthorMail(),
+			'email' => $newComment->getCommentAuthorMailAddress(),
 			'message' => $newComment->getMessage(),
 		);
 
@@ -398,13 +398,13 @@ class CommentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			$this->mailUtility->setSettings($this->settings);
 			$this->mailUtility->setFluidTemplate($this->makeFluidTemplateObject());
 			$this->mailUtility->setControllerContext($this->controllerContext);
-			$this->mailUtility->setReceivers($comment->getAuthorMail());
+			$this->mailUtility->setReceivers($comment->getCommentAuthorMailAddress());
 			$this->mailUtility->setTemplatePath($this->settings['sendMailToAuthorAfterPublishTemplate']);
 			$this->mailUtility->setSubjectLocallangKey('tx_pwcomments.mailToAuthorAfterPublish.subject');
 			$this->mailUtility->setAddQueryStringToLinks(FALSE);
 			$this->mailUtility->sendMail($comment);
 			$this->addFlashMessage(
-				LocalizationUtility::translate('mailSentToAuthorAfterPublish', 'PwComments', array($comment->getAuthorMail()))
+				LocalizationUtility::translate('mailSentToAuthorAfterPublish', 'PwComments', array($comment->getCommentAuthorMailAddress()))
 			);
 		}
 	}
