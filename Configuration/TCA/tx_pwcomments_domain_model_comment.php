@@ -17,6 +17,8 @@ return [
     'ctrl' => [
         'title' => $ll . 'tx_pwcomments_domain_model_comment',
         'label' => 'author_name',
+        'label_alt' => 'author, entry_uid,  message',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'versioningWS' => 2,
